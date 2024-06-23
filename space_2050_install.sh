@@ -103,7 +103,6 @@ git checkout space2050
 "$python_here" -m pip install . $extra_args
 cd ../
 
-echo "CHECK"
 git clone https://github.com/mikekatz04/GBGPU.git
 cd GBGPU/
 git checkout add_orbits
@@ -112,7 +111,6 @@ git checkout add_orbits
 cd ../
 rm -rf GBGPU
 
-echo "CHECK2"
 git clone https://github.com/mikekatz04/BBHx.git
 cd BBHx/
 git checkout add_orbits
@@ -124,7 +122,6 @@ cp ../LISAanalysistools/include/Detector.hpp include/
 cd ../
 rm -rf BBHx
 
-echo "CHECK3"
 git clone https://github.com/mikekatz04/lisa-on-gpu.git
 cd lisa-on-gpu/
 "$python_here" scripts/prebuild.py 
