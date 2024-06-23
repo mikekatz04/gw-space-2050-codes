@@ -15,9 +15,10 @@ cd gw-space-2050-codes
 bash space_2050_install.sh env_name=2050_env
 ```
 
-3) Open the notebook and run.
+3) Activate the environment, open the notebook, and run.
 
 ```
 cd notebooks/
+conda activate $env_name
 jupyter lab space_2050_tutorial.ipynb
 ```
