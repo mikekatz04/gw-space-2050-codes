@@ -39,25 +39,25 @@ if [ -z ${env_name+x} ]; then env_name="2050_env"; fi
 
 echo "Now installing into conda environment named $env_name."
 
-# echo "Installing LATW setup."; 
+echo "Installing space 2050 setup."; 
 
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     echo "This system is macOS."
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "This system is macOS."
 
-#     machine=$(uname -m)
-#     if [[ "$machine" == "arm64" ]]; then
-#         echo "This is an M1 Mac."
-#         conda create -n "$env_name" -c conda-forge -y wget gsl hdf5 numpy pandas Cython scipy tqdm  openblas lapack liblapacke jupyter ipython h5py requests matplotlib python=3.12
-#     else
-#         echo "This is not an M1 Mac."
-#         conda create -n "$env_name" -c conda-forge -y clangxx_osx-64 clang_osx-64 wget gsl  openblas lapack liblapacke hdf5 numpy pandas Cython scipy tqdm jupyter ipython h5py requests matplotlib python=3.12
-#     fi
-# elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-#     echo "This system is Unix/Linux."
-#     conda create -n "$env_name" -c conda-forge -y gcc_linux-64 gxx_linux-64 wget gsl  openblas lapack liblapacke hdf5 numpy pandas Cython scipy tqdm jupyter ipython h5py requests matplotlib python=3.12
-# else
-#     echo "Unsupported operating system."
-# fi
+    machine=$(uname -m)
+    if [[ "$machine" == "arm64" ]]; then
+        echo "This is an M1 Mac."
+        conda create -n "$env_name" -c conda-forge -y wget gsl hdf5 numpy pandas Cython scipy tqdm  openblas lapack liblapacke jupyter ipython h5py requests matplotlib python=3.12
+    else
+        echo "This is not an M1 Mac."
+        conda create -n "$env_name" -c conda-forge -y clangxx_osx-64 clang_osx-64 wget gsl  openblas lapack liblapacke hdf5 numpy pandas Cython scipy tqdm jupyter ipython h5py requests matplotlib python=3.12
+    fi
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo "This system is Unix/Linux."
+    conda create -n "$env_name" -c conda-forge -y gcc_linux-64 gxx_linux-64 wget gsl  openblas lapack liblapacke hdf5 numpy pandas Cython scipy tqdm jupyter ipython h5py requests matplotlib python=3.12
+else
+    echo "Unsupported operating system."
+fi
 
 # get conda base information
 IN="$(conda info | grep -i 'base environment')"
@@ -72,15 +72,15 @@ do
 done
 
 conda_base="${out[3]}"
-# conda_init_sh="$conda_base/etc/profile.d/conda.sh"
-# echo "$conda_init_sh"
-# source $conda_init_sh
+conda_init_sh="$conda_base/etc/profile.d/conda.sh"
+echo "$conda_init_sh"
+source $conda_init_sh
 
-# conda activate "$env_name"
-# echo "should be done"
-# conda_check="$(conda info | grep -i 'active environment')"
-# echo "conda env: $conda_check"
-# echo "Environment created. Installing additional packages before FEW install."
+conda activate "$env_name"
+echo "should be done"
+conda_check="$(conda info | grep -i 'active environment')"
+echo "conda env: $conda_check"
+echo "Environment created. Installing additional packages before FEW install."
 
 python_here=""$conda_base"/envs/"$env_name"/bin/python"
 pip_here=""$conda_base"/envs/"$env_name"/bin/pip"
@@ -88,7 +88,7 @@ pip_here=""$conda_base"/envs/"$env_name"/bin/pip"
 echo "python: $python_here" 
 echo "pip: $pip_here"
 
-# "$pip_here" install corner eryn chainconsumer mpmath;
+"$pip_here" install corner eryn chainconsumer mpmath;
 
 machine=$(uname -m)
 if [[ "$machine" == "arm64" ]]; then
