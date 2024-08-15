@@ -15,7 +15,9 @@ cd gw-space-2050-codes
 bash space_2050_install.sh env_name=2050_env
 ```
 
-3) Activate the environment, open the notebook, and run.
+3) Follow the install instructions for [`gwspaceperf`](https://git.aei.mpg.de/gwspace2050/performance-model).
+
+4) Activate the environment, open the notebook, and run.
 
 ```
 cd notebooks/

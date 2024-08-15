@@ -97,61 +97,9 @@ else
     extra_args=
 fi
 
-git clone https://github.com/mikekatz04/LISAanalysistools.git
-cd LISAanalysistools/
-git checkout space2050
-"$python_here" -m pip install . $extra_args
-cd ../
-
-git clone https://github.com/mikekatz04/GBGPU.git
-cd GBGPU/
-git checkout add_orbits
-"$python_here" scripts/prebuild.py 
-"$python_here" -m pip install . $extra_args
-cd ../
-rm -rf GBGPU
-
-git clone https://github.com/mikekatz04/BBHx.git
-cd BBHx/
-git checkout add_orbits
-"$python_here" scripts/prebuild.py 
-cp ../LISAanalysistools/src/Detector.cpp src/
-cp ../LISAanalysistools/src/pycppdetector.pyx src/
-cp ../LISAanalysistools/include/Detector.hpp include/
-"$python_here" -m pip install . $extra_args
-cd ../
-rm -rf BBHx
-
-git clone https://github.com/mikekatz04/lisa-on-gpu.git
-cd lisa-on-gpu/
-"$python_here" scripts/prebuild.py 
-cp ../LISAanalysistools/src/Detector.cpp src/
-cp ../LISAanalysistools/src/pycppdetector.pyx src/
-cp ../LISAanalysistools/include/Detector.hpp include/
-"$python_here" -m pip install . $extra_args
-cd ../
-rm -rf lisa-on-gpu
-
+"$python_here" -m pip install lisaanalysistools $extra_args
+"$python_here" -m pip install bbhx $extra_args
 "$python_here" -m pip install fastemriwaveforms $extra_args
+"$python_here" -m pip install fastlisaresponse $extra_args
+"$python_here" -m pip install gbgpu $extra_args
 
-rm -rf LISAanalysistools/
-
-# if [[ "$machine" == "arm64" ]]; then
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/LISAanalysistools.git@space2050 --ccbin /usr/bin/
-#     "$python_here" -m pip install fastlisaresponse --ccbin /usr/bin/
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/BBHx.git@add_orbits --ccbin /usr/bin/
-#     "$python_here" -m pip install fastemriwaveforms --ccbin /usr/bin/
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/GBGPU.git@add_orbits --ccbin /usr/bin/
-# else
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/LISAanalysistools.git@space2050
-#     "$python_here" -m pip install fastlisaresponse
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/BBHx.git@add_orbits
-#     "$python_here" -m pip install fastemriwaveforms
-#     "$python_here" -m pip install git+https://github.com/mikekatz04/GBGPU.git@add_orbits
-# fi
-
-# conda activate "$env_name"
-# if [[ "$run_tests" == "true" ]]; 
-#  then echo "Running tests...";
-#  "$python_here" -m unittest discover;
-# fi
