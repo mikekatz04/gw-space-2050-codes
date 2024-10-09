@@ -24,3 +24,8 @@ cd notebooks/
 conda activate $env_name
 jupyter lab space_2050_tutorial.ipynb
 ```
+
+## Authors
+
+* Michael L. Katz
+* Alice Perego (Stochastic Contributions)
