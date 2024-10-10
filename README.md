@@ -25,6 +25,11 @@ conda activate $env_name
 jupyter lab space_2050_tutorial.ipynb
 ```
 
+## Acknowledgements
+
+* LISA orbits and deciHertz orbits are based on [https://link.springer.com/article/10.1007/s40295-021-00263-2](https://link.springer.com/article/10.1007/s40295-021-00263-2).
+* LISA max orbits are based on [https://iopscience.iop.org/article/10.1088/1361-6382/acf3c7](https://iopscience.iop.org/article/10.1088/1361-6382/acf3c7).
+
 ## Authors
 
 * Michael L. Katz
