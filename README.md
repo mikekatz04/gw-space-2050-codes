@@ -33,4 +33,4 @@ jupyter lab space_2050_tutorial.ipynb
 ## Authors
 
 * Michael L. Katz
-* Alice Perego (Stochastic Contributions)
+* Alice Perego, Alberto Sesana, Matteo Bonetti (Stochastic Contributions)
